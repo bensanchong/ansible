@@ -3,5 +3,5 @@
 #10.88.88.53
 #10.88.88.8
 #10.88.88.28
-10.88.88.29
-remote_user:bensan
+10.88.88.29	ansible_connection=ssh	ansible_user=bensan
+
