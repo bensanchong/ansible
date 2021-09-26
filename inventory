@@ -1,7 +1,7 @@
 #10.88.88.51
 #10.88.88.52
 #10.88.88.53
-#10.88.88.8
+10.88.88.8	ansible_connection=ssh	ansible_user=pi
 #10.88.88.28
 10.88.88.29	ansible_connection=ssh	ansible_user=bensan
 
