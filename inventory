@@ -1,7 +1,12 @@
+[ProxMox]
 10.88.88.51	ansible_connection=ssh	ansible_user=root
 10.88.88.52	ansible_connection=ssh	ansible_user=root
 10.88.88.53	ansible_connection=ssh	ansible_user=root
+
+[Pihole-Unifi]
 10.88.88.8	ansible_connection=ssh	ansible_user=pi
+
+[Lab Linux Servers]
 #10.88.88.28
 10.88.88.29	ansible_connection=ssh	ansible_user=bensan
 
