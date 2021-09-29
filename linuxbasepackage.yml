@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  -name: install base tools to debian linux
+   apt:
+     name: tmux
