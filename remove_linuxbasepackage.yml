@@ -11,9 +11,9 @@
   - name: install tmux
     apt:
       name: tmux
-      state: latest
+      state: absent
 
   - name: install htop
     apt:
       name: htop
-      state: latest
+      state: absent
