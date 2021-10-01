@@ -32,5 +32,6 @@
 
 [ct_linux_db]
 10.88.88.37	ansible_connection=ssh	ansible_user=root
+10.88.88.42	ansible_connection=ssh	ansible_user=root
 
 
