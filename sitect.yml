@@ -1,0 +1,55 @@
+---
+
+- hosts: containers
+  pre_tasks:
+
+  - name: install updates (CentOS)
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: ct_linux_web
+  tasks:
+
+  - name: install appache2 and php packages for Ubuntu
+    apt:
+      name:
+        - apache2
+        - libapache2-mod-php
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install apache and php for CentOS
+    dnf:
+      name:
+        - httpd
+        - php
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+- hosts: ct_linux_file
+  tasks:
+
+  - name: install Samba file share
+    dnf:
+      name: samba
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+- hosts: ct_linux_db
+  tasks:
+
+  - name: install mariadb
+    apt:
+      name: mariadb-server
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+
