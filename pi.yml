@@ -1,0 +1,13 @@
+---
+
+- hosts: Pihole
+  become: true
+  tasks:
+
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist 
+      update_cache: yes
+
+
+
