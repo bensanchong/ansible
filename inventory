@@ -37,3 +37,12 @@
 [workstations]
 10.88.88.38	ansible_connection=ssh	ansible_user=bensanchong
 
+[k8_containers]
+10.88.88.75	ansible_connection=ssh	ansible_user=root
+10.88.88.98	ansible_connection=ssh	ansible_user=root
+10.88.88.99	ansible_connection=ssh	ansible_user=root
+10.88.88.100	ansible_connection=ssh	ansible_user=root
+10.88.88.101	ansible_connection=ssh	ansible_user=root
+10.88.88.102	ansible_connection=ssh	ansible_user=root
+10.88.88.103	ansible_connection=ssh	ansible_user=root
+

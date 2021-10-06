@@ -1,0 +1,41 @@
+---
+
+- hosts: k8-containers
+  pre_tasks:
+
+  - name: install updates (CentOS)
+    tags: always
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+#- hosts: k8-containers
+#  become: true
+#  tasks:
+#
+#  - name: install unzip
+#    package:
+#      name: unzip
+#
+#  - name: install docker.io kubelet kubeadm kubectl kubernetes-cni
+#    apt:
+#      
+#
+#- hosts: ct_linux_web
+#  tasks:
+#
+#  - name: install appache2 and php packages for Ubuntu
+#    tags: apache, apache2, ubuntu
+#    apt:
+#      name:
+#        - apache2
+#        - libapache2-mod-php
+#      state: latest
+#    when: ansible_distribution == "Ubuntu"

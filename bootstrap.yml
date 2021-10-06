@@ -1,0 +1,54 @@
+---
+
+- hosts: containers
+  pre_tasks:
+
+  - name: install updates (CentOS)
+    tags: always
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: containers
+  become: true
+  tasks:
+
+  - name: create service account
+    tags: always
+    user:
+      name: svcact
+      group: root
+
+  - name: add ssh key for svcact
+    tags: always
+    authorized_key:
+      user: svcact
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMS7L7ayvj+Wap4HAIN0MhDiKycAIO1dImSwpFwhC2Ko Ansible"
+
+  - name: add sudoers file for svcact
+    tags: always
+    copy:
+      src: sudoer_svcact
+      dest: /etc/sudoers.d/svcact
+      owner: root
+      group: root
+      mode: 0440
+    when: ansible_distribution == "Ubuntu"
+
+  - name: add sudoers file for svcact CentOS
+    tags: always
+    copy:
+      src: sudoer_svcact
+      dest: /etc/sudoers
+      owner: root
+      group: root
+      mode: 0440
+    when: ansible_distribution == "CentOS"
+
