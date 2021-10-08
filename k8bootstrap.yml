@@ -3,6 +3,29 @@
 - hosts: k8_containers
   pre_tasks:
 
+  - name: install prerequisites curl and gnupg2 for k8s and api key
+    apt:
+      name:
+        - curl
+        - gnupg2
+      state: latest
+
+  - name: install api key
+    shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    args:
+      warn: no
+
+  - name: install and copy Kubernetes repo file
+    tags: kubernetes,basepackage,always
+    copy:
+      src: kubernetes.list
+      dest: /etc/apt/sources.list.d/
+      owner: root
+      group: root
+      mode: 0440
+
+- hosts: k8_containers
+  tasks:
   - name: install updates (Ubuntu)
     apt:
       upgrade: dist
@@ -33,3 +56,14 @@
       group: root
       mode: 0440
     when: ansible_distribution == "Ubuntu"
+
+  - name: install K8s base programs
+    tags: always
+    apt:
+      name:
+        - docker.io
+        - kubelet
+        - kubeadm
+        - kubectl
+        - kubernetes-cni
+      state: latest 
