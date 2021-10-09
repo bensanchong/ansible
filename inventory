@@ -6,53 +6,23 @@
 [Pihole]
 10.88.88.8	ansible_connection=ssh	ansible_user=pi
 
-[linuxtest]
-#10.88.88.28	ansible_connection=ssh	ansible)user=bensan
-10.88.88.29	ansible_connection=ssh	ansible_user=bensan
-10.88.88.30	ansible_connection=ssh	ansible_user=bensan
-10.88.88.31	ansible_connection=ssh	ansible_user=bensan
-
-[containers]
-10.88.88.35	ansible_connection=ssh	ansible_user=root
-10.88.88.36	ansible_connection=ssh	ansible_user=root
-10.88.88.40	ansible_connection=ssh	ansible_user=root
-10.88.88.37	ansible_connection=ssh	ansible_user=root
-10.88.88.41	ansible_connection=ssh	ansible_user=root
-
-[linux_web_CentOS]
-10.88.88.33	ansible_connection=ssh	ansible_user=bensan
-
-[ct_linux_web]
-10.88.88.35	ansible_connection=ssh	ansible_user=root
-10.88.88.36	ansible_connection=ssh	ansible_user=root
-10.88.88.40	ansible_connection=ssh	ansible_user=root
-
-[ct_linux_file]
-10.88.88.41	ansible_connection=ssh	ansible_user=root
-
-[ct_linux_db]
-10.88.88.37	ansible_connection=ssh	ansible_user=root
-10.88.88.42	ansible_connection=ssh	ansible_user=root
-
 [workstations]
 10.88.88.38	ansible_connection=ssh	ansible_user=bensanchong
 
-[k8_containers]
-#10.88.88.75	ansible_connection=ssh	ansible_user=root
-10.88.88.98	ansible_connection=ssh	ansible_user=root
-10.88.88.99	ansible_connection=ssh	ansible_user=root
-10.88.88.100	ansible_connection=ssh	ansible_user=root
-10.88.88.101	ansible_connection=ssh	ansible_user=root
-10.88.88.102	ansible_connection=ssh	ansible_user=root
-10.88.88.103	ansible_connection=ssh	ansible_user=root
+[k8_all]
+10.88.88.65	ansible_connection=ssh	ansible_user=bensan
+10.88.88.66	ansible_connection=ssh	ansible_user=bensan
+10.88.88.67	ansible_connection=ssh	ansible_user=bensan
+
+
 
 [k8_CTL]
-10.88.88.98	ansible_connection=ssh	ansible_user=root
-10.88.88.99	ansible_connection=ssh	ansible_user=root
-10.88.88.100	ansible_connection=ssh	ansible_user=root
+#10.88.88.98	ansible_connection=ssh	ansible_user=root
+#10.88.88.99	ansible_connection=ssh	ansible_user=root
+#10.88.88.100	ansible_connection=ssh	ansible_user=root
 
 [k8_nodes]
-10.88.88.101	ansible_connection=ssh	ansible_user=root
-10.88.88.102	ansible_connection=ssh	ansible_user=root
-10.88.88.103	ansible_connection=ssh	ansible_user=root
+#10.88.88.101	ansible_connection=ssh	ansible_user=root
+#10.88.88.102	ansible_connection=ssh	ansible_user=root
+#10.88.88.103	ansible_connection=ssh	ansible_user=root
 

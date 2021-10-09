@@ -1,0 +1,72 @@
+---
+
+- hosts: k8_all
+  become: yes
+  pre_tasks:
+
+  - name: install prerequisites curl and gnupg2 for k8s and api key
+    apt:
+      name:
+        - curl
+        - gnupg2
+      state: latest
+
+  - name: install api key
+    shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    args:
+      warn: no
+
+  - name: install and copy Kubernetes repo file
+    tags: kubernetes,basepackage,always
+    copy:
+      src: kubernetes.list
+      dest: /etc/apt/sources.list.d/
+      owner: root
+      group: root
+      mode: 0440
+
+- hosts: k8_all
+  become: yes
+  tasks:
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: k8_all
+  become: yes
+  tasks:
+
+  - name: create service account
+    tags: always
+    user:
+      name: svcact
+      group: root
+
+  - name: add ssh key for svcact
+    tags: always
+    authorized_key:
+      user: svcact
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMS7L7ayvj+Wap4HAIN0MhDiKycAIO1dImSwpFwhC2Ko Ansible"
+
+  - name: add sudoers file for svcact
+    tags: always
+    copy:
+      src: sudoer_svcact
+      dest: /etc/sudoers.d/svcact
+      owner: root
+      group: root
+      mode: 0440
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install K8s base programs
+    tags: always
+    apt:
+      name:
+        - docker.io
+        - kubelet
+        - kubeadm
+        - kubectl
+        - kubernetes-cni
+      state: latest 
