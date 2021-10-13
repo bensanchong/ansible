@@ -1,25 +1,26 @@
 [ProxMox]
-10.88.88.51	ansible_connection=ssh	ansible_user=root
-10.88.88.52	ansible_connection=ssh	ansible_user=root
-10.88.88.53	ansible_connection=ssh	ansible_user=root
+10.88.88.201	ansible_connection=ssh	ansible_user=root
+10.88.88.202	ansible_connection=ssh	ansible_user=root
+10.88.88.203	ansible_connection=ssh	ansible_user=root
 
 [Pihole]
-10.88.88.8	ansible_connection=ssh	ansible_user=pi
+10.88.88.8      ansible_connection=ssh	ansible_user=pi
 
 [workstations]
-10.88.88.38	ansible_connection=ssh	ansible_user=bensanchong
+10.88.88.38     ansible_connection=ssh	ansible_user=bensanchong
 
 [k8_all]
-10.88.88.65	ansible_connection=ssh	ansible_user=bensan
-10.88.88.66	ansible_connection=ssh	ansible_user=bensan
-10.88.88.67	ansible_connection=ssh	ansible_user=bensan
+#10.88.88.78	    ansible_connection=ssh	ansible_user=bensan
+10.88.88.79     ansible_connection=ssh	ansible_user=bensan
+10.88.88.81     ansible_connection=ssh	ansible_user=bensan
+10.88.88.82     ansible_connection=ssh	ansible_user=bensan
 
 
 
 [k8_CTL]
-#10.88.88.98	ansible_connection=ssh	ansible_user=root
-#10.88.88.99	ansible_connection=ssh	ansible_user=root
-#10.88.88.100	ansible_connection=ssh	ansible_user=root
+10.88.88.191	ansible_connection=ssh	ansible_user=root
+10.88.88.192	ansible_connection=ssh	ansible_user=root
+10.88.88.193	ansible_connection=ssh	ansible_user=root
 
 [k8_nodes]
 #10.88.88.101	ansible_connection=ssh	ansible_user=root
